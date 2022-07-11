@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Training {{ training.title }}</h1>
+    <p>{{ training.id }}. {{ training.title }}. {{ training.description }}. {{ training.price}}. {{ training.date_start}}. {{ training.date_end}}</p>
+    <a href="/trainings/edit?id={{ training.id }}">Edit</a>
+    <form action="/trainings/delete" method="POST">
+        <input type="hidden" name="id" value="{{ training.id }}">
+        <button>Delete</button>
+    </form>
+    <a href="/trainings">Back</a>
+{% endblock %}
