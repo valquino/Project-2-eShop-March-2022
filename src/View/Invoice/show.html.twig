@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Facture de {{ invoice.firstname }} {{ invoice.lastname }}</h1>
+    <p>Facture n° {{ invoice.id }} | Date : {{ invoice.created_at|date('j F Y')|format_datetime('long', 'none',locale='fr') }} | Montant : {{ invoice.total }} €</p>
+    <a href="/invoices/edit?id={{ invoice.id }}">Editer la facture</a>
+    <form action="/invoices/delete" method="POST">
+        <input type="hidden" name="id" value="{{ invoice.id }}">
+        <button>Supprimer la facture</button>
+    </form>
+    <a href="/invoices">Retour</a>
+
+<div class="container">   
+  <div class="row">
+    <div class="col-sm-6">
+        <div class="col-md-12 border border-dark ps-1">
+          <img class="img-responsive bg-dark mb-1 mx-auto d-block " alt="iamgurdeeposahan" src="/assets/images/Logohackademy.svg" style="width: 71px; border-radius: 43px;">
+          <p>0120456877 <i class="row"></i></p>
+          <p>contact@hackademy.com <i class="row"></i></p>
+          <p>France<i class="row"></i></p>
+        </div>
+        <div class="col-md-12 border border-dark ps-1">
+          <tbody>
+          <h5>{{ invoice.firstname }} {{ invoice.lastname }} </h5>
+          <p><b>Mobile :</b> +1 12345-4569</p>
+          <p><b>Email :</b> {{ user.email }}</p>
+          <p><b>Address :</b> {{user.address}}</p>
+          </tbody>
+        </div>
+        <div class="col-md-12 border border-dark ps-1">
+          <h3>Facture n°{{ invoice.id }} </h3>
+          <p><b>Date :</b> {{ invoice.created_at|date('j F Y')|format_datetime('long', 'none',locale='fr') }}</p>
+        </div>
+        <table class="table table-hover border border-dark">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+              <tbody>
+                {% for training in trainings %}
+                  <tr>
+                    <td class="col-md-9">{{training.title}}</td>
+                    <td class="col-md-3"><i class="fa fa-inr"></i> {{training.price}} €</td>
+                  </tr>
+                {% endfor %}
+                <tr>
+                  <td class="text-right"><h2><strong>Total: </strong></h2></td>
+                  <td class="text-left text-danger"><h2><strong><i class="fa fa-inr"></i> {{ invoice.total }} €</strong></h2></td>
+                </tr>
+              </tbody>
+        </table>   
+    </div>    
+  </div>
+</div>
+{% endblock %}
