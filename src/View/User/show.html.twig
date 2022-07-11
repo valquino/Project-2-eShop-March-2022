@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Informations de l'étudiant : {{ user.firstname }}</h1>
+    <p>{{ user.id }}. {{ user.firstname }}</p>
+    <a href="/users/edit?id={{ user.id }}">Edit</a>
+    <form action="/users/delete" method="POST">
+        <input type="hidden" name="id" value="{{ user.id }}">
+        <button>Delete</button>
+    </form>
+    <a href="/users">Back</a>
+{% endblock %}
