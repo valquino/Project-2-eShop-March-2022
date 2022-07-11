@@ -1,0 +1,212 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+	<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
+	<main class="main-bg-color">
+		<div class="container">
+			<h1 class="main-text-color text-center py-4">Toutes les formations</h1>
+			<div class="row d-lg-none mx-auto pb-5">
+
+				<div id="carouselControlsSmall" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						{% for training in trainings %}
+							<div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+								<div class="row">
+									<div class="card card-custom bg-white border-white border-0" id="slide{{ loop.index }}" style="height: 35rem">
+										<div class="card-custom-img" style="background-image: url(https://www.vhv.rs/dpng/d/11-112994_homer-simpson-png-transparent-png.png);"></div>
+										<div class="card-custom-avatar">
+											<img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Avatar"/>
+										</div>
+										<div class="card-body secondary-bg-color" style="overflow-y: auto">
+											<h4 class="card-title secondary-text-color">{{ training.title}}</h4>
+											<p class="card-text secondary-text-color">{{ training.description}}</p>
+											<p class="card-text secondary-text-color">Prix de la formation :
+												{{ training.price}}
+												€</p>
+											<p class="card-text secondary-text-color">Début de la formation :
+												{{ training.date_start}}</p>
+											<p class="card-text secondary-text-color">Fin de la formation :
+												{{ training.date_end}}</p>
+											<p class="card-text secondary-text-color">Durée de la formation :
+												{{ training.duration}}
+												heures</p>
+											<p class="card-text secondary-text-color">
+												X /
+												{{training.max_students}}
+												étudiants déjà inscrits. X places disponibles avant le
+												{{ training.date_start }}.</p>
+											<p class="card-text secondary-text-color">Stack ID :{{ training.stack_id }}</p>
+										</div>
+										<div class="card-footer-hackademy secondary-bg-color text-center">
+											<a href="/trainings/show?id={{ training.id }}" class="btn-hackademy btn-primary-hackademy">Détails</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<li>Aucune formation n'est proposée actuellement.</li>
+						{% endfor %}
+					</div>
+					<button class="carousel-control-prev d-lg-none" type="button" data-bs-target="#carouselControlsSmall" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next d-lg-none" type="button" data-bs-target="#carouselControlsSmall" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+
+			</div>
+
+			<section class="pt-5 pb-5">
+				<div class="container-fluid">
+					{% if trainings|length >= 8 %}
+
+						<div class="row d-none d-lg-block">
+							<div class="col-12">
+								<div id="carouselExampleControlsLarge" class="carousel slide">
+									<div class="carousel-inner">
+										<div class="carousel-item active">
+											<div class="row">
+												{% for i in 0..2 %}
+													<div class="col-md-4 mb-3">
+														<div class="card card-custom bg-white border-white border-0" style="height: 45rem">
+															<div class="card-custom-img" style="background-image: url(https://www.vhv.rs/dpng/d/11-112994_homer-simpson-png-transparent-png.png);"></div>
+															<div class="card-custom-avatar">
+																<img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Avatar"/>
+															</div>
+															<div class="card-body secondary-bg-color" style="overflow-y: auto">
+																<h4 class="card-title secondary-text-color">{{ trainings[i].title}}</h4>
+																<p class="card-text secondary-text-color">{{ trainings[i].description}}</p>
+																<p class="card-text secondary-text-color">Prix de la formation :
+																	{{ trainings[i].price}}
+																	€</p>
+																<p class="card-text secondary-text-color">Début de la formation :
+																	{{ trainings[i].date_start}}</p>
+																<p class="card-text secondary-text-color">Fin de la formation :
+																	{{ trainings[i].date_end}}</p>
+																<p class="card-text secondary-text-color">Durée de la formation :
+																	{{ trainings[i].duration}}
+																	heures</p>
+																<p class="card-text secondary-text-color">
+																	X /
+																	{{trainings[i].max_students}}
+																	étudiants déjà inscrits. X places disponibles avant le
+																	{{ trainings[i].date_start }}.</p>
+																<p class="card-text secondary-text-color">Stack ID :{{ trainings[i].stack_id }}</p>
+															</div>
+															<div class="card-footer-hackademy secondary-bg-color text-center">
+																<a href="/trainings/show?id={{ trainings[i].id }}" class="btn-hackademy btn-primary-hackademy">Détails</a>
+															</div>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+										</div>
+										<div class="carousel-item">
+											<div class="row">
+												{% for i in 3..5 %}
+													<div class="col-md-4 mb-3">
+														<div class="card card-custom bg-white border-white border-0" style="height: 45rem">
+															<div class="card-custom-img" style="background-image: url(https://www.vhv.rs/dpng/d/11-112994_homer-simpson-png-transparent-png.png);"></div>
+															<div class="card-custom-avatar">
+																<img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Avatar"/>
+															</div>
+															<div class="card-body secondary-bg-color" style="overflow-y: auto">
+																<h4 class="card-title secondary-text-color">{{ trainings[i].title}}</h4>
+																<p class="card-text secondary-text-color">{{ trainings[i].description}}</p>
+																<p class="card-text secondary-text-color">Prix de la formation :
+																	{{ trainings[i].price}}
+																	€</p>
+																<p class="card-text secondary-text-color">Début de la formation :
+																	{{ trainings[i].date_start}}</p>
+																<p class="card-text secondary-text-color">Fin de la formation :
+																	{{ trainings[i].date_end}}</p>
+																<p class="card-text secondary-text-color">Durée de la formation :
+																	{{ trainings[i].duration}}
+																	heures</p>
+																<p class="card-text secondary-text-color">
+																	X /
+																	{{trainings[i].max_students}}
+																	étudiants déjà inscrits. X places disponibles avant le
+																	{{ trainings[i].date_start }}.</p>
+																<p class="card-text secondary-text-color">Stack ID :{{ trainings[i].stack_id }}</p>
+															</div>
+															<div class="card-footer-hackademy secondary-bg-color text-center">
+																<a href="/trainings/show?id={{ trainings[i].id }}" class="btn-hackademy btn-primary-hackademy">Détails</a>
+															</div>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+										</div>
+										<div class="carousel-item">
+											<div class="row">
+												{% for i in 6..8 %}
+													<div class="col-md-4 mb-3">
+														<div class="card card-custom bg-white border-white border-0" style="height: 45rem">
+															<div class="card-custom-img" style="background-image: url(https://www.vhv.rs/dpng/d/11-112994_homer-simpson-png-transparent-png.png);"></div>
+															<div class="card-custom-avatar">
+																<img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Avatar"/>
+															</div>
+															<div class="card-body secondary-bg-color" style="overflow-y: auto">
+																<h4 class="card-title secondary-text-color">{{ trainings[i].title}}</h4>
+																<p class="card-text secondary-text-color">{{ trainings[i].description}}</p>
+																<p class="card-text secondary-text-color">Prix de la formation :
+																	{{ trainings[i].price}}
+																	€</p>
+																<p class="card-text secondary-text-color">Début de la formation :
+																	{{ trainings[i].date_start}}</p>
+																<p class="card-text secondary-text-color">Fin de la formation :
+																	{{ trainings[i].date_end}}</p>
+																<p class="card-text secondary-text-color">Durée de la formation :
+																	{{ trainings[i].duration}}
+																	heures</p>
+																<p class="card-text secondary-text-color">
+																	X /
+																	{{trainings[i].max_students}}
+																	étudiants déjà inscrits. X places disponibles avant le
+																	{{ trainings[i].date_start }}.</p>
+																<p class="card-text secondary-text-color">Stack ID :{{ trainings[i].stack_id }}</p>
+															</div>
+															<div class="card-footer-hackademy secondary-bg-color text-center">
+																<a href="/trainings/show?id={{ trainings[i].id }}" class="btn-hackademy btn-primary-hackademy">Détails</a>
+															</div>
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+									<button class="carousel-control-prev  d-none d-lg-block" type="button" data-bs-target="#carouselExampleControlsLarge" data-bs-slide="prev">
+										<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Previous</span>
+									</button>
+									<button class="carousel-control-next  d-none d-lg-block" type="button" data-bs-target="#carouselExampleControlsLarge" data-bs-slide="next">
+										<span class="carousel-control-next-icon" aria-hidden="true"></span>
+										<span class="visually-hidden">Next</span>
+									</button>
+								</div>
+							</div>
+						</div>
+					{% else %}
+						<div class="row">
+							<div class="col-6 mx-auto">
+								<h2 class="main-text-color py-3">Il n'y a pas assez de formations en base de données</h2>
+								<img class="img-fluid" src="https://www.webstickersmuraux.com/fr/img/asfs1085-png/folder/products-detalle-png/autocollants-homer-simpson-court-nu.png" alt="Homer Simpson"/>
+							</div>
+						</div>
+					{% endif %}
+				</section>
+
+
+			</div>
+		</main>
+	{% endblock %}
+	{# {% block javascript %}
+		<!-- JavaScript Bundle with Popper -->
+		<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
+	{% endblock %} #}

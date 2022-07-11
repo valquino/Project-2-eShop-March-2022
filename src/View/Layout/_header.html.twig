@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light navbar-expand-md sticky-top bg-dark bg-hackademy">
+  <div class="container-fluid">
+    <a class="navbar-brand d-none d-sm-block me-3" href="#"><img class= "header" src="Assets/Home-page.png" alt=""></a>
+    <img class="logobrand d-none d-lg-block d-xl-block d-xxl-block"src="Assets/Logohackademy.svg" alt="Logo">
+    <img class="logobrand  d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"src="Assets/Logomobile.svg" alt="Logo" id="Logomobile">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+    <div class="navbar-collapse flex-grow-0" id="navbarSupportedContent">
+
+      <form class="d-flex">
+        <input class="form-control d-none d-md-block d-lg-block d-xl-block me-2 mr-4" type="search" placeholder="Search a training" aria-label="Search">
+        <button class="btn pt-2 pb-2 d-none d-md-block d-lg-block d-xl-block btn-outline-success m-1" type="submit">Search</button>
+      </form>
+      <ul class="list-inline mb-0 ms-4 d-xs-none d-sm-block d-md-block d-lg-block">
+          <li class="list-inline-item" role="button" href="#login-form" data-bs-toggle="collapse" aria-expanded="false" aria-controls="login-form">
+            {% if session.user %}
+              <img class="header" src="https://img.icons8.com/external-solid-kendis-lasman/48/ffffff/external-user-ecommerce-solid-kendis-lasman-2.png"/>
+            {% else %}
+              <button class="btn btn-primary">
+                Connexion | Inscription
+              </button>
+            {% endif %}
+          </li>
+          <li class="list-inline-item "><img class="header" src="Assets/Favoris.png" alt="Favoris"></li>
+          <li class="list-inline-item "> <img class="header" src="Assets/panier.png" alt="panier"></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% if session.user %}
+  <div class="bg-dark position-absolute rounded-bottom text-light me-5 pt-2 pb-2 ps-3 pe-3" id="logged-user">
+    {{ session.user.firstname }} | <a href="/logout" class="link-primary">Déconnexion [x]</a>
+  </div>
+{% else %}
+  {% include 'Login/_form.html.twig' %}
+{% endif %}
+{% if logoutMessage is same as(true) %}
+    <div class="alert alert-warning alert-dismissible position-absolute fade show fw-bold mt-3 me-5" id="logout" role="alert">
+        Vous avez été déconnecté !
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %}

@@ -1,0 +1,21 @@
+body {
+    overflow-x: hidden;
+}
+
+#login-form {
+    max-width: 25%;
+    z-index: 99;
+    right: 10px;
+}
+
+#login-form .form-floating >.form-control {
+    padding: 1rem !important;
+}
+
+#login-form input {
+    height: 3.2rem !important;
+}
+
+#logged-user, #logout {
+    right: 0;
+}
