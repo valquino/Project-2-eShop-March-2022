@@ -1,0 +1,140 @@
+:root {
+    --Oxford-Blue: #030027;
+    --Platinum: #EBEBEB;
+    --Space-cadet: #151E3F;
+    --button-shadow: #3d6e89;
+    --button-shadow-2: #264363;
+}
+
+.main-bg-color {
+    background-color: var(--Oxford-Blue);
+}
+
+.secondary-bg-color {
+    background-color: var(--Platinum);
+}
+
+.ternary-bg-color {
+    background-color: var(--Space-cadet);
+}
+
+.main-text-color {
+    color: var(--Platinum);
+}
+
+.secondary-text-color {
+    color: var(--Oxford-Blue);
+}
+
+.btn-hackademy {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-primary-hackademy {
+    color: var(--Platinum);
+    background-color: var(--Oxford-Blue);
+    border-color: var(--Oxford-Blue);
+  }
+
+  .btn-primary-hackademy:hover {
+    color: var(--Platinum);
+    box-shadow: 2px 2px 0px 0px var(--button-shadow-2), 4px 4px 0px 0px var(--button-shadow);
+  }
+
+  .card-desktop-height {
+    height: 45vh;
+  }
+
+.card-custom {
+    overflow: hidden;
+    min-height: 450px;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  }
+  
+  .card-custom-img {
+    height: 200px;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: inherit;
+  }
+  
+  /* First border-left-width setting is a fallback */
+  .card-custom-img::after {
+    position: absolute;
+    content: '';
+    top: 161px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 40px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 545px;
+    border-left-width: calc(575px - 5vw);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+  }
+  
+  .card-custom-avatar img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+    position: absolute;
+    top: 100px;
+    left: 1.25rem;
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-footer-hackademy {
+    padding: .5rem 1rem;
+    background-color: var(--Platinum);
+    --bs-bg-opacity: 0;
+    border-top: 1px solid rgba(0,0,0,.125);
+    border-top-color: rgba(0, 0, 0, 0.125);
+  }
+
+body {
+    font-size: 0.8rem;
+}
+
+/* Header style */
+
+a > .logo  {
+    width: 30px;
+    height: auto;
+}
+
+
+.logobrand{
+    width: 7rem;
+    height: auto;
+}
+
+#Logomobile {
+    width: 4.4em;
+}
+
+.header {
+    width: 30px;
+    height: auto;
+    margin-left: 1.5rem;
+}
